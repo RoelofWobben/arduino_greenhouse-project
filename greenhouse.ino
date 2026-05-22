@@ -55,9 +55,8 @@ unsigned long lastSend = 0;
 void setup() {
   Serial.begin(115200);
 
-  while(!Serial) {}
+  delay(1000); 
 
-  Serial.println("=== Greenhouse Monitor V1 ===");
 
   //initLeds();
   //initSensors();
@@ -82,7 +81,6 @@ void loop() {
 
   /*
   //checkWifi();
-  Serial.print("loop");
   static SensorData data;
 
   if (millis() - lastRead >= READ_INTERVAL) {
