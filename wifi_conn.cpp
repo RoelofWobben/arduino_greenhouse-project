@@ -5,19 +5,18 @@
 #include "WiFiNINA.h"
 
 void connectWifi() {
-   Serial.begin(9600);
-  while (!Serial){}
+  
 
   if (WiFi.status() == WL_NO_MODULE) {
     Serial.println("Communication with wifi module failed");
   }
 
   while(WiFi.status() != WL_CONNECTED) {
-    //Serial.print("Attempt to connect to: ");
-    //Serial.println(SECRET_SSID);
-    //Serial.println(".");
+    Serial.print("Attempt to connect to: ");
+    Serial.println(SECRET_SSID);
+    Serial.println(".");
     WiFi.begin(SECRET_SSID,  SECRET_PASS);
-    //delay(1000);
+    delay(1000);
   }
 
   Serial.println("Wifi connected");
