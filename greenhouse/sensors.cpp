@@ -2,9 +2,9 @@
 
 #include "constants.h"
 #include "sensors.h"
-#include "Air_Quality_Sensor.h"
+//#include "Air_Quality_Sensor.h"
 
-AirQualitySensor sensor(A6);
+//AirQualitySensor sensor(A6);
 
 
 void initSensors() {
@@ -27,9 +27,9 @@ SensorData readSensors(){
     int percentage = map(raw2, 0, 1023, 0, 100);
     data.light = percentage ;
 
-    int raw3 = sensor.slope();
+    //int raw3 = sensor.slope();
 
-    data.air_quality = sensor.getValue();
+    //data.air_quality = sensor.getValue();
 
 
 

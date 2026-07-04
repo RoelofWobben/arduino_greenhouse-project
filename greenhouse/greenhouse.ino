@@ -13,6 +13,7 @@
 #include "influx_conn.h"
 #include "wifi_conn.h"
 #include <NTPClient.h>
+#include "mqtt.h"
 
 
 /**
@@ -56,15 +57,16 @@ void setup() {
   Serial.begin(115200);
 
   delay(1000);
-  
+
 
 
   initLeds();
   initSensors();
   connectWifi();
-  syncTime(); 
-  
-  
+  connectMqtt();
+  syncTime();
+
+
 
   Serial.println("Setup complete");
 }
@@ -81,9 +83,15 @@ void setup() {
  */
 void loop() {
 
-  
   checkWifi();
-  
+
+  if (!mqttClient.connected()) {
+    connectMqtt();
+  }
+
+  mqttClient.loop();
+
+
   static SensorData data;
 
   if (millis() - lastRead >= READ_INTERVAL) {
@@ -93,16 +101,14 @@ void loop() {
     printSerial(data);
     updateLeds(data.moisture);
   }
-  
-
-  if (millis() - lastSend >= SEND_INTERVAL){
 
 
+  if (millis() - lastSend >= SEND_INTERVAL) {
 
-    
+
+
+
     lastSend = millis();
     sendInfluxDB(data.moisture, data.light, data.air_quality);
   }
-  
 }
-
