@@ -48,6 +48,7 @@ The software is intended to be portable to other WiFi-enabled Arduino-compatible
 * InfluxDB
 * Grafana
 * MQTT Broker (Mosquitto)
+* telegraf
 
 ---
 
