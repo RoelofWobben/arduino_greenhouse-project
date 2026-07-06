@@ -63,7 +63,6 @@ void setup() {
   initLeds();
   initSensors();
   connectWifi();
-  connectMqtt();
   syncTime();
 
 
@@ -85,7 +84,10 @@ void loop() {
 
   checkWifi();
 
-  if (!mqttClient.connected()) {
+  static unsigned long lastMqttAttempt = 0;
+
+  if (!mqttClient.connected() && millis() - lastMqttAttempt > 5000) {
+    lastMqttAttempt = millis();
     connectMqtt();
   }
 
@@ -95,11 +97,13 @@ void loop() {
   static SensorData data;
 
   if (millis() - lastRead >= READ_INTERVAL) {
+
+    Serial.println("ben nu sensors aan het lezen");
+
     lastRead = millis();
 
     data = readSensors();
     printSerial(data);
-    updateLeds(data.moisture);
   }
 
 
