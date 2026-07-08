@@ -1,8 +1,8 @@
 # Greenhouse Monitor
 
-<!--
+
 ![Greenhouse Hardware](images/greenhouse-hardware.jpg)
--->
+
 
 ## About
 
