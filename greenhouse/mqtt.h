@@ -4,5 +4,5 @@
 
 extern PubSubClient mqttClient;
 
-void connectMqtt();
+bool connectMqtt();
 void mqttCallback(char* topic, byte* payload, unsigned int length);

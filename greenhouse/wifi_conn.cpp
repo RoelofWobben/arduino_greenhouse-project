@@ -3,11 +3,12 @@
 #include "wifi_conn.h"
 #include "secrets.h"
 #include "WiFiNINA.h"
+#include "leds.h"
 
 
 void connectWifi() {
   
-
+  setStatusRed(); 
   if (WiFi.status() == WL_NO_MODULE) {
     Serial.println("Communication with wifi module failed");
   }
@@ -23,6 +24,7 @@ void connectWifi() {
   Serial.println("Wifi connected");
   Serial.print("IP address: ");
   Serial.println(WiFi.localIP());
+  setStatusGreen(); 
 }
 
 
