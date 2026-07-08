@@ -1,7 +1,7 @@
 # Greenhouse Monitor
 
 
-![Greenhouse Hardware](images/greenhouse-hardware.jpg)
+<img src="https://raw.githubusercontent.com/RoelofWobben/arduino_greenhouse-project/main/images/greenhouse2.jpg" alt="Greenhouse Hardware" width="400">
 
 
 ## About
